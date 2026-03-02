@@ -1,8 +1,27 @@
 'use client';
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Code, Zap, TrendingUp, Activity } from "lucide-react";
 
 export function Hero() {
+  const [particles, setParticles] = useState<
+    { left: number; top: number; dx: number; duration: number; delay: number }[]
+  >([]);
+
+  useEffect(() => {
+    // Generate deterministic-on-mount particle positions on the client only.
+    const count = 12;
+    const p = Array.from({ length: count }, () => {
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const dx = Math.random() * 50 - 25;
+      const duration = 8 + Math.random() * 4;
+      const delay = Math.random() * 5;
+      return { left, top, dx, duration, delay };
+    });
+    setParticles(p);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated gradient background */}
@@ -66,25 +85,25 @@ export function Hero() {
         }}
       />
 
-      {/* Floating particles */}
-      {[...Array(12)].map((_, i) => (
+      {/* Floating particles (created client-side to avoid SSR hydration mismatches) */}
+      {particles.map((p, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-white/30 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${p.left}%`,
+            top: `${p.top}%`,
           }}
           animate={{
             y: [0, -100, -200, -300],
-            x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25, 0],
+            x: [0, p.dx, p.dx, 0],
             opacity: [0, 0.5, 0.8, 0],
             scale: [0, 1, 1.5, 0],
           }}
           transition={{
-            duration: 8 + Math.random() * 4,
+            duration: p.duration,
             repeat: Infinity,
-            delay: Math.random() * 5,
+            delay: p.delay,
             ease: "easeInOut",
           }}
         />
