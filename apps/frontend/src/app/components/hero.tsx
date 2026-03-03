@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Code, Zap, TrendingUp, Activity } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   const [particles, setParticles] = useState<
@@ -294,25 +295,27 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
-            <motion.button 
-              className="group w-full sm:w-auto px-6 py-3 bg-white text-black rounded-lg font-medium transition-all hover:bg-neutral-200 flex items-center justify-center gap-2 relative overflow-hidden"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-200 to-transparent"
-                animate={{
-                  x: ['-100%', '200%'],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 1,
-                }}
-              />
-              <span className="relative z-10">Start building</span>
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 relative z-10" />
-            </motion.button>
+            <Link href="/dashboard" className="w-full sm:w-auto">
+              <motion.button 
+                className="group w-full sm:w-auto px-6 py-3 bg-white text-black rounded-lg font-medium transition-all hover:bg-neutral-200 flex items-center justify-center gap-2 relative overflow-hidden cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-200 to-transparent"
+                  animate={{
+                    x: ['-100%', '200%'],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                  }}
+                />
+                <span className="relative z-10">Start building</span>
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 relative z-10" />
+              </motion.button>
+            </Link>
             <motion.button 
               className="w-full sm:w-auto px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg font-medium transition-all flex items-center justify-center gap-2"
               whileHover={{ scale: 1.02 }}
