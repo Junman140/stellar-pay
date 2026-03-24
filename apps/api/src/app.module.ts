@@ -5,9 +5,10 @@ import { AppService } from './app.service';
 import { HealthModule } from './health/health.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
-  imports: [HealthModule, AuthModule],
+  imports: [HealthModule, AuthModule, PaymentsModule],
   controllers: [AppController],
   providers: [
     AppService,
