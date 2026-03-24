@@ -3,12 +3,13 @@ import { APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthModule } from './health/health.module';
+import { TreasuryModule } from './treasury/treasury.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { PaymentsModule } from './payments/payments.module';
 
 @Module({
-  imports: [HealthModule, AuthModule, PaymentsModule],
+  imports: [HealthModule, TreasuryModule, AuthModule, PaymentsModule],
   controllers: [AppController],
   providers: [
     AppService,

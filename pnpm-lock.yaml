@@ -5683,7 +5683,6 @@ packages:
       {
         integrity: sha512-ESVaN2nzWhcI5tf3Zzcq9aqCZ676VWzqw07eEZ0qxAcEOAFYBa0pWq8sK34OQeHLY3JsfKXZS9mDyzyxGjeLzA==,
       }
-
   base32.js@0.1.0:
     resolution:
       {
@@ -15498,7 +15497,6 @@ snapshots:
 
   bare-semver@1.0.2:
     optional: true
-
   base32.js@0.1.0: {}
 
   base64-js@1.5.1: {}
